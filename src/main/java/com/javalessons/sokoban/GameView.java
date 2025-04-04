@@ -37,10 +37,6 @@ public class GameView {
         gridWidth = width;
         gridHeight = height;
         map = levelMap;
-        // drawGrid(2, 2);
-        // We do not know initial player position
-        // player = new Rectangle(TILE_SIZE, TILE_SIZE, Color.BLUE);
-        // grid.add(player, 2, 2); // Initial player position
     }
 
     void drawGrid(int playerX, int playerY) {
@@ -57,8 +53,6 @@ public class GameView {
                     case TARGET -> tileView.setImage(targetImage);
                     case CRATE_ON_TARGET -> tileView.setImage(crateOnTargetImage);
                 }
-                //Rectangle cell = new Rectangle(TILE_SIZE, TILE_SIZE, Color.LIGHTGRAY);
-                //cell.setStroke(Color.BLACK);
                 grid.add(tileView, row, col);
             }
         }
