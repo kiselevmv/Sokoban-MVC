@@ -4,10 +4,10 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import com.javalessons.sokoban.controller.*;
+import com.javalessons.sokoban.model.*;
+import com.javalessons.sokoban.view.*;
 
-enum TileType {
-        FLOOR, WALL, PLAYER, CRATE, TARGET, CRATE_ON_TARGET
-    }
 
 public class Sokoban extends Application {
     @Override
@@ -17,7 +17,7 @@ public class Sokoban extends Application {
         GameView view = new GameView(model.getGridWidth(), model.getGridHeight(), model.loadLevel());
         // MVP makes code ugly and slow. Is it inherent feature of method or we just did a bad way?
         // We move data by coping it from object to object instead of accessing data by link
-        view.drawGrid(model.getPlayerX(), model.getPlayerY());
+        // view.drawGrid(model.getPlayerX(), model.getPlayerY());
         // Initialising board
         GameController controller = new GameController(model, view);
 

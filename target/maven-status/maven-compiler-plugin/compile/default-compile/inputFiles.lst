@@ -1,5 +1,6 @@
 /Users/mikhail/NetBeansProjects/Sokoban/src/main/java/module-info.java
-/Users/mikhail/NetBeansProjects/Sokoban/src/main/java/com/javalessons/sokoban/GameController.java
-/Users/mikhail/NetBeansProjects/Sokoban/src/main/java/com/javalessons/sokoban/GameModel.java
-/Users/mikhail/NetBeansProjects/Sokoban/src/main/java/com/javalessons/sokoban/GameView.java
+/Users/mikhail/NetBeansProjects/Sokoban/src/main/java/com/javalessons/sokoban/model/GameModel.java
+/Users/mikhail/NetBeansProjects/Sokoban/src/main/java/com/javalessons/sokoban/controller/GameController.java
+/Users/mikhail/NetBeansProjects/Sokoban/src/main/java/com/javalessons/sokoban/view/GameView.java
+/Users/mikhail/NetBeansProjects/Sokoban/src/main/java/com/javalessons/sokoban/model/TileType.java
 /Users/mikhail/NetBeansProjects/Sokoban/src/main/java/com/javalessons/sokoban/Sokoban.java

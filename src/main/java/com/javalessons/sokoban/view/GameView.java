@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.javalessons.sokoban;
+package com.javalessons.sokoban.view;
 
 /**
  *
@@ -13,6 +13,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import com.javalessons.sokoban.model.GameModel;
+import com.javalessons.sokoban.model.TileType;
 
 // GameView.java (Draws the game grid and player)
 public class GameView {
@@ -39,7 +41,7 @@ public class GameView {
         map = levelMap;
     }
 
-    void drawGrid(int playerX, int playerY) {
+    public void drawGrid(int playerX, int playerY) {
         grid.getChildren().clear();
         for (int row = 0; row < gridWidth; row++) {
             for (int col = 0; col < gridHeight; col++) {

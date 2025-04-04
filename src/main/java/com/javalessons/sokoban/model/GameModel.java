@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.javalessons.sokoban;
+package com.javalessons.sokoban.model;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,6 +15,7 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 
+
 /**
  *
  * @author mikhail
@@ -26,6 +27,8 @@ public class GameModel {
     private final int gridSize = 5;
     private final int GRID_WIDTH = 19;
     private final int GRID_HEIGHT = 11;
+    
+
     
     TileType[][] grid = new TileType[GRID_HEIGHT][GRID_WIDTH];
 
@@ -81,6 +84,14 @@ public class GameModel {
                 System.err.println("Error loading level: " + e.getMessage());
             }
         return grid;
+    }
+    
+    public TileType getCell (int y, int x) {
+        return grid[y][x];
+    }
+    
+    public void setCell (int y, int x, TileType tile) {
+        grid[y][x] = tile;
     }
 
 }

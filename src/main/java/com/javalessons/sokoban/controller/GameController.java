@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.javalessons.sokoban;
+package com.javalessons.sokoban.controller;
 
 /**
  *
@@ -10,6 +10,8 @@ package com.javalessons.sokoban;
  */
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
+import com.javalessons.sokoban.model.*;
+import com.javalessons.sokoban.view.*;
 
 // GameController.java (Handles movement)
 public class GameController {
@@ -35,30 +37,30 @@ public class GameController {
         int newX = model.getPlayerX() + dx;
         int newY = model.getPlayerY() + dy;
         // Check if the move is valid
-        if (model.grid[newY][newX] == TileType.FLOOR || model.grid[newY][newX] ==  TileType.TARGET) { 
+        if (model.getCell(newY, newX) == TileType.FLOOR || model.getCell(newY, newX) ==  TileType.TARGET) { 
             // If new position is FLOOR or TARGET - we can move there freely
             model.setPlayerX(newX);
             model.setPlayerY(newY);
         // if (newX >= 0 && newX < model.getGridWidth() && newY >= 0 && newY < model.getGridHeight()) {
         //    model.setPlayerX(newX);
         //    model.setPlayerY(newY);
-        } else if (model.grid[newY][newX] == TileType.CRATE || model.grid[newY][newX] == TileType.CRATE_ON_TARGET) {
+        } else if (model.getCell(newY, newX) == TileType.CRATE || model.getCell(newY, newX) == TileType.CRATE_ON_TARGET) {
             // If new position is CRATE or CRATE_ON_TARGET - we need to push the crate forward
             int crateNewX = newX + dx;
             int crateNewY = newY + dy;
 
-            if (model.grid[crateNewY][crateNewX] == TileType.FLOOR) {// || grid[crateNewY][crateNewX] == TileType.TARGET) {
+            if (model.getCell(crateNewY,crateNewX) == TileType.FLOOR) {// || grid[crateNewY][crateNewX] == TileType.TARGET) {
                 // If new position is FLOOR - we can move crate here
                 // Move crate
-                model.grid[newY][newX] = (model.grid[newY][newX] == TileType.TARGET) ? TileType.TARGET : TileType.FLOOR; // Restore target if needed
-                model.grid[crateNewY][crateNewX] = TileType.CRATE; // Move crate
+                model.setCell(newY, newX, (model.getCell(newY, newX) == TileType.TARGET) ? TileType.TARGET : TileType.FLOOR); // Restore target if needed
+                model.setCell(crateNewY, crateNewX, TileType.CRATE); // Move crate
                 model.setPlayerX(newX);
                 model.setPlayerY(newY);
-            } else if (model.grid[crateNewY][crateNewX] == TileType.TARGET) {
+            } else if (model.getCell(crateNewY, crateNewX) == TileType.TARGET) {
                 // If new position is TARGET - we can move crate here, but we need to restore previous position 
                 // Move crate
-                model.grid[newY][newX] = (model.grid[newY][newX] == TileType.CRATE_ON_TARGET) ? TileType.TARGET : TileType.FLOOR; // Restore tile behind
-                model.grid[crateNewY][crateNewX] = TileType.CRATE_ON_TARGET; // Move crate on target
+                model.setCell(newY, newX, (model.getCell(newY, newX) == TileType.CRATE_ON_TARGET) ? TileType.TARGET : TileType.FLOOR); // Restore tile behind
+                model.setCell(crateNewY, crateNewX, TileType.CRATE_ON_TARGET); // Move crate on target
                 model.setPlayerX(newX);
                 model.setPlayerY(newY);
             }
