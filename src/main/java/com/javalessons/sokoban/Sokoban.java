@@ -13,8 +13,8 @@ public class Sokoban extends Application {
     @Override
     public void start(Stage primaryStage) {
         GameModel model = new GameModel();
-        TileType[][] levelMap = model.loadLevel();
-        GameView view = new GameView(model.getGridWidth(), model.getGridHeight(), levelMap);
+        // TileType[][] levelMap = model.loadLevel();
+        GameView view = new GameView(model.getGridWidth(), model.getGridHeight(), model.loadLevel());
         GameController controller = new GameController(model, view);
 
         StackPane root = new StackPane(view.getGrid());
