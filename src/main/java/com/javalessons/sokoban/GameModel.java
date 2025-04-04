@@ -21,8 +21,8 @@ import java.nio.file.Files;
  */
 // GameModel.java (Handles game state)
 public class GameModel {
-    private int playerX = 2; // Initial player position
-    private int playerY = 2;
+    private int playerX; // We could (but not have to) move this inside a player class
+    private int playerY;
     private final int gridSize = 5;
     private final int GRID_WIDTH = 19;
     private final int GRID_HEIGHT = 11;

@@ -37,12 +37,13 @@ public class GameView {
         gridWidth = width;
         gridHeight = height;
         map = levelMap;
-        drawGrid();
-        player = new Rectangle(TILE_SIZE, TILE_SIZE, Color.BLUE);
-        grid.add(player, 2, 2); // Initial player position
+        // drawGrid(2, 2);
+        // We do not know initial player position
+        // player = new Rectangle(TILE_SIZE, TILE_SIZE, Color.BLUE);
+        // grid.add(player, 2, 2); // Initial player position
     }
 
-    private void drawGrid() {
+    void drawGrid(int playerX, int playerY) {
         grid.getChildren().clear();
         for (int row = 0; row < gridWidth; row++) {
             for (int col = 0; col < gridHeight; col++) {
@@ -61,6 +62,14 @@ public class GameView {
                 grid.add(tileView, row, col);
             }
         }
+        ImageView tileView = new ImageView();
+        tileView.setFitWidth(TILE_SIZE);
+        tileView.setFitHeight(TILE_SIZE);
+        // tileView above was inside for loop. It was local variable of loop.
+        tileView.setImage(playerImage);
+        grid.add(tileView, playerX, playerY);
+        // We just put player tile above the grid at the end of draw board cycle. 
+        // So it does not "shade" tiles below the player.
     }
 
     public GridPane getGrid() {

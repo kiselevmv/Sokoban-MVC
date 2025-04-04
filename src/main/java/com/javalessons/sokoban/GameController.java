@@ -34,9 +34,36 @@ public class GameController {
     public void movePlayer(int dx, int dy) {
         int newX = model.getPlayerX() + dx;
         int newY = model.getPlayerY() + dy;
-        if (newX >= 0 && newX < model.getGridWidth() && newY >= 0 && newY < model.getGridHeight()) {
+        // Check if the move is valid
+        if (model.grid[newY][newX] == TileType.FLOOR || model.grid[newY][newX] ==  TileType.TARGET) { 
+            // If new position is FLOOR or TARGET - we can move there freely
             model.setPlayerX(newX);
             model.setPlayerY(newY);
+        // if (newX >= 0 && newX < model.getGridWidth() && newY >= 0 && newY < model.getGridHeight()) {
+        //    model.setPlayerX(newX);
+        //    model.setPlayerY(newY);
+        } else if (model.grid[newY][newX] == TileType.CRATE || model.grid[newY][newX] == TileType.CRATE_ON_TARGET) {
+            // If new position is CRATE or CRATE_ON_TARGET - we need to push the crate forward
+            int crateNewX = newX + dx;
+            int crateNewY = newY + dy;
+
+            if (model.grid[crateNewY][crateNewX] == TileType.FLOOR) {// || grid[crateNewY][crateNewX] == TileType.TARGET) {
+                // If new position is FLOOR - we can move crate here
+                // Move crate
+                model.grid[newY][newX] = (model.grid[newY][newX] == TileType.TARGET) ? TileType.TARGET : TileType.FLOOR; // Restore target if needed
+                model.grid[crateNewY][crateNewX] = TileType.CRATE; // Move crate
+                model.setPlayerX(newX);
+                model.setPlayerY(newY);
+            } else if (model.grid[crateNewY][crateNewX] == TileType.TARGET) {
+                // If new position is TARGET - we can move crate here, but we need to restore previous position 
+                // Move crate
+                model.grid[newY][newX] = (model.grid[newY][newX] == TileType.CRATE_ON_TARGET) ? TileType.TARGET : TileType.FLOOR; // Restore tile behind
+                model.grid[crateNewY][crateNewX] = TileType.CRATE_ON_TARGET; // Move crate on target
+                model.setPlayerX(newX);
+                model.setPlayerY(newY);
+            }
         }
+        view.drawGrid(newX, newY);
+        // Update board to show new positions of moved items
     }
 }
