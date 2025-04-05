@@ -23,8 +23,7 @@ public class GameView {
     private int gridHeight;
     
     private GridPane grid = new GridPane();
-    private Rectangle player;
-    
+  
     private Image playerImage = new Image(getClass().getResourceAsStream("Character4.png"));
     private Image wallImage = new Image(getClass().getResourceAsStream("Wall_Brown.png"));
     private Image floorImage = new Image(getClass().getResourceAsStream("Ground_Concrete.png"));
@@ -80,8 +79,4 @@ public class GameView {
         return (gridHeight * TILE_SIZE);
     }
 
-    public void updatePlayerPosition(int x, int y) {
-        GridPane.setColumnIndex(player, x);
-        GridPane.setRowIndex(player, y);
-    }
 }

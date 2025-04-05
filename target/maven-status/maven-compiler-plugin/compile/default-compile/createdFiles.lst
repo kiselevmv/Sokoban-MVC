@@ -1,7 +1,1 @@
-com/javalessons/sokoban/model/TileType.class
-com/javalessons/sokoban/model/GameModel.class
-com/javalessons/sokoban/controller/GameController.class
 module-info.class
-com/javalessons/sokoban/view/GameView$1.class
-com/javalessons/sokoban/Sokoban.class
-com/javalessons/sokoban/view/GameView.class
